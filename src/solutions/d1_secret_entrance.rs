@@ -1,10 +1,9 @@
 use super::Problem;
-use std::str::Lines;
 
 pub struct D1_SecretEntrance;
 
 impl Problem for D1_SecretEntrance {
-    fn first_part(input: &mut Lines) -> String {
+    fn first_part(input: &Vec<&str>) -> String {
         let mut dial_position: i32 = 50;
         let mut password: u32 = 0;
 
@@ -22,7 +21,7 @@ impl Problem for D1_SecretEntrance {
         password.to_string()
     }
 
-    fn second_part(input: &mut Lines) -> String {
+    fn second_part(input: &Vec<&str>) -> String {
         let mut dial_position: i32 = 50;
         let mut password: u32 = 0;
 

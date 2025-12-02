@@ -1,20 +1,21 @@
-use std::str::Lines;
-
 pub trait Problem {
-    fn solve(input: Lines) -> (String, String) {
-        (
-            Self::first_part(&mut input.clone()),
-            Self::second_part(&mut input.clone()),
-        )
+    fn solve(input: String) -> (String, String) {
+        let input: Vec<&str> = Self::format_input(&input);
+
+        (Self::first_part(&input), Self::second_part(&input))
     }
 
-    fn first_part(input: &mut Lines) -> String {
+    fn first_part(input: &Vec<&str>) -> String {
         let _ = input;
         String::default()
     }
 
-    fn second_part(input: &mut Lines) -> String {
+    fn second_part(input: &Vec<&str>) -> String {
         let _ = input;
         String::default()
+    }
+
+    fn format_input(src: &str) -> Vec<&str> {
+        src.lines().collect()
     }
 }

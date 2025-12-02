@@ -4,7 +4,7 @@ mod solutions;
 use problem::Problem;
 use std::{env, error::Error};
 
-use crate::solutions::D1_SecretEntrance;
+use crate::solutions::{D1_SecretEntrance, D2_GiftShop};
 
 fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
@@ -16,17 +16,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         .parse::<u8>()
         .unwrap_or_else(|value| panic!("Not a valid day : {}", value));
 
-    let buffer = std::fs::read_to_string(format!("./inputs/{}/input", day))
+    let input = std::fs::read_to_string(format!("./inputs/{}/input", day))
         .unwrap_or_else(|_| panic!("Cannot read the input file for the day : {}", day));
 
-    let input = buffer.lines();
-
-    let func = match day {
+    let result = match day {
         1 => D1_SecretEntrance::solve,
+        2 => D2_GiftShop::solve,
         _ => unimplemented!(),
-    };
-
-    let result = func(input);
+    }(input);
 
     println!("{:?}", result);
 
