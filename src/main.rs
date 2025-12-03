@@ -4,7 +4,7 @@ mod solutions;
 use problem::Problem;
 use std::{env, error::Error};
 
-use crate::solutions::{D1_SecretEntrance, D2_GiftShop};
+use crate::solutions::{D1_SecretEntrance, D2_GiftShop, D3_Lobby};
 
 fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
@@ -22,6 +22,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let result = match day {
         1 => D1_SecretEntrance::solve,
         2 => D2_GiftShop::solve,
+        3 => D3_Lobby::solve,
         _ => unimplemented!(),
     }(input);
 
