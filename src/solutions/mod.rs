@@ -10,3 +10,6 @@ pub use d2_gift_shop::D2_GiftShop;
 
 mod d3_lobby;
 pub use d3_lobby::D3_Lobby;
+
+mod d4_printing_department;
+pub use d4_printing_department::D4_PrintingDepartment;
