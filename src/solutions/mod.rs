@@ -13,3 +13,6 @@ pub use d3_lobby::D3_Lobby;
 
 mod d4_printing_department;
 pub use d4_printing_department::D4_PrintingDepartment;
+
+mod d5_cafeteria;
+pub use d5_cafeteria::D5_Cafeteria;
