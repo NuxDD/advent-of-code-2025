@@ -1,7 +1,5 @@
 use super::Problem;
 
-use std::collections::HashMap;
-
 pub struct D3_Lobby;
 
 impl Problem for D3_Lobby {
