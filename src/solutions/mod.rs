@@ -19,3 +19,6 @@ pub use d5_cafeteria::D5_Cafeteria;
 
 mod d6_trashcompactor;
 pub use d6_trashcompactor::D6_TrashCompactor;
+
+mod d7_laboratories;
+pub use d7_laboratories::D7_Laboratories;
