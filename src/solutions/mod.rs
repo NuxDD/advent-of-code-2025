@@ -16,3 +16,6 @@ pub use d4_printing_department::D4_PrintingDepartment;
 
 mod d5_cafeteria;
 pub use d5_cafeteria::D5_Cafeteria;
+
+mod d6_trashcompactor;
+pub use d6_trashcompactor::D6_TrashCompactor;

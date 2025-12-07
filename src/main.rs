@@ -6,6 +6,7 @@ use std::{env, error::Error};
 
 use crate::solutions::{
     D1_SecretEntrance, D2_GiftShop, D3_Lobby, D4_PrintingDepartment, D5_Cafeteria,
+    D6_TrashCompactor,
 };
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -27,6 +28,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         3 => D3_Lobby::solve,
         4 => D4_PrintingDepartment::solve,
         5 => D5_Cafeteria::solve,
+        6 => D6_TrashCompactor::solve,
         _ => unimplemented!(),
     }(input);
 
