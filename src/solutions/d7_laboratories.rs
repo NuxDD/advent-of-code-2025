@@ -1,6 +1,6 @@
 use super::Problem;
 
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 
 type Position = (usize, usize);
 
@@ -21,7 +21,25 @@ impl Problem for D7_Laboratories {
 
         splits += Self::move_beam(&mut grid, starting_pos, &mut visited_splitters);
 
+        // Could return the len(&self) of visited_splitters... w/e
         splits.to_string()
+    }
+
+    fn second_part(input: &Vec<&str>) -> String {
+        let mut timelines_count: u64 = 0;
+
+        let mut path_counts: HashMap<Position, u64> = HashMap::new();
+
+        let mut grid: Vec<Vec<char>> = input
+            .iter()
+            .map(|&line| line.chars().collect::<Vec<char>>())
+            .collect();
+
+        let starting_pos = Self::get_starting_position(&grid);
+
+        timelines_count += Self::count_paths(&mut grid, starting_pos, &mut path_counts);
+
+        timelines_count.to_string()
     }
 }
 
@@ -65,6 +83,35 @@ impl D7_Laboratories {
 
         splitters_found
     }
+
+    fn count_paths(
+        grid: &mut Vec<Vec<char>>,
+        from: Position,
+        path_counts: &mut HashMap<Position, u64>,
+    ) -> u64 {
+        if let Some(&count) = path_counts.get(&from) {
+            // Early return if we have already computed the number of paths from this position
+            return count;
+        }
+
+        let (current_x, mut current_y) = (from.0, from.1);
+        let grid_height = grid.len();
+
+        while current_y < grid_height && grid[current_y][current_x] != Self::SPLITTER {
+            grid[current_y][current_x] = Self::BEAM;
+            current_y += 1;
+        }
+
+        let paths = if current_y == grid_height {
+            1 // End of path
+        } else {
+            Self::count_paths(grid, (current_x - 1, current_y), path_counts)
+                + Self::count_paths(grid, (current_x + 1, current_y), path_counts)
+        };
+
+        path_counts.insert(from, paths);
+        paths
+    }
 }
 
 #[cfg(test)]
@@ -79,5 +126,7 @@ mod test {
 
         let result = D7_Laboratories::first_part(&input);
         assert_eq!(result, "21");
+        let result = D7_Laboratories::second_part(&input);
+        assert_eq!(result, "40");
     }
 }
