@@ -22,3 +22,9 @@ pub use d6_trashcompactor::D6_TrashCompactor;
 
 mod d7_laboratories;
 pub use d7_laboratories::D7_Laboratories;
+
+mod d8_playground;
+pub use d8_playground::D8_Playground;
+
+mod d9_movietheater;
+pub use d9_movietheater::D9_MovieTheater;
